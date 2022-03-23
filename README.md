@@ -33,22 +33,27 @@
 - belongs_to :user
 - has_many :orders
 
+
 ## ordersテーブル
 | Column              | Type       | Options                        |
 | --------------------| ---------- | ------------------------------ |
-| card-number         | integer    | null: false                    |
-| card-exp-month      | integer    | null: false                    |
-| card-exp-year       | integer    | null: false                    |
-| card-cvc            | integer    | null: false                    |
-| postal-code         | string     | null: false                    |
-| prefecture          | string     | null: false                    |
-| city                | string     | null: false                    |
-| addresses           | string     | null: false                    |
-| building            | string     | null: false                    |
-| phone-number        | string     | null: false                    |
 | item                | references | null: false, foreign_key:true  |
 | user                | references | null: false, foreign_key:true  |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
+- belongs_to :address
+
+## addressesテーブル
+| Column              | Type       | Options                        |
+| --------------------| ---------- | ------------------------------ |
+| postal-code         | string     | null: false                    |
+| prefecture          | string     | null: false                    |
+| city                | string     | null: false                    |
+| addresses           | string     | null: false                    |
+| building            | string     |                                |
+| phone-number        | string     | null: false                    |
+
+### Association
+- belongs_to :order
