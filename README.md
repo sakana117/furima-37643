@@ -20,11 +20,11 @@
 | ----------------------------| ---------- | -------------------------------------|
 | item-name                   | string     | null: false                          |
 | item-info                   | text       | null: false                          |
-| item-category               | string     | null: false                          |
-| item-sales-status           | string     | null: false                          |
-| item-shipping-fee-status    | string     | null: false                          |
-| item-prefecture             | string     | null: false                          |
-| item-scheduled-delivery     | string     | null: false                          |
+| item-category_id            | integer    | null: false                          |
+| item-sales-status_id        | integer    | null: false                          |
+| item-shipping-fee-status_id | integer    | null: false                          |
+| item-prefecture_id          | integer    | null: false                          |
+| item-scheduled-delivery_id  | integer    | null: false                          |
 | item-price                  | integer    | null: false                          |
 | user                        | references | null: false, foreign_key:true        |
 | ※item-image                 |            |                                      |
