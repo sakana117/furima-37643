@@ -27,7 +27,7 @@
 | scheduled_delivery_id       | integer    | null: false                          |
 | item_price                  | integer    | null: false                          |
 | user                        | references | null: false, foreign_key:true        |
-| ※item-image                 |            |                                      |
+| ※image(ActiveStorage)       |            |                                      |
 
 ### Association
 - belongs_to :user
