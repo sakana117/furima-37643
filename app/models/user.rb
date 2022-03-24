@@ -11,5 +11,5 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true,format: { with: /\A[ァ-ヶ]+\z/ }
   validates :birth_date,      presence: true
 
-  validates :password,        presence: true,length: { minimum: 6 },format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
+  validates :password,        length: { minimum: 6 },format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
 end
