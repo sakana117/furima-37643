@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
-    #テスト総数：20個
+    #テスト総数：21個
     context '新規登録できるとき' do
       #新規登録できるとき：1個
       it '全ての項目が存在すれば登録できる' do
@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
     end
 
     context '新規登録できないとき' do
-      #新規登録できないとき：●個
+      #新規登録できないとき：20個
       #新規登録できないとき：nickname関連：1個
       it 'nicknameが空では登録できない' do
         @user.nickname = ''
@@ -136,6 +136,13 @@ RSpec.describe User, type: :model do
 
       it 'passwordが数字が存在しない場合は登録できない' do
         @user.password = 'abcdef'
+        @user.password_confirmation = 'abcdef'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is invalid')    
+      end
+
+      it '全角文字を含むパスワードは登録できない' do
+        @user.password = 'アイウエオか'
         @user.password_confirmation = 'abcdef'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid')    
