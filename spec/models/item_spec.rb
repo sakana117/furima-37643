@@ -6,7 +6,7 @@ RSpec.describe Item, type: :model do
   end
 
   describe 'ユーザー新規登録' do
-    #テスト総数：21個
+    #テスト総数：20個
     context '新規登録できるとき' do
       #新規登録できるとき：1個
       it '全ての項目が存在すれば登録できる' do
@@ -15,7 +15,7 @@ RSpec.describe Item, type: :model do
     end
 
     context '新規登録できないとき' do
-      #新規登録できないとき：20個
+      #新規登録できないとき：19個
       #新規登録できないとき：item_*関連：7個
       it 'item_nameが空では登録できない' do
         @item.item_name = ''
@@ -127,7 +127,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('User must exist')
       end
 
-      #新規登録できないとき：image関連：7個
+      #新規登録できないとき：image関連：1個
       it 'imageが空では登録できない' do
         @item.image = nil
         @item.valid?
