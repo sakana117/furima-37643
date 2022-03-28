@@ -59,6 +59,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item price is out of setting range")
       end
 
+      it 'item_priceが半角数字以外では登録できない' do
+        @item.item_price = "３００"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item price is out of setting range")
+      end
+
       #新規登録できないとき：ActiveHash関連：10個
       it 'category_idが空では登録できない' do
         @item.category_id = ''
