@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render new_user_session_path
+      render :new
     end
   end
 
@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
 
   def edit
     unless user_signed_in? && current_user.id == @item.user_id
-      redirect_to action: :index
+      redirect_to new_user_session_path
     end
   end
 
