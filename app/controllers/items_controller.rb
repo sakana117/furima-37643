@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new
+      render new_user_session_path
     end
   end
 
