@@ -1,4 +1,4 @@
-class AddressAddress
+class OrderAddress
   include ActiveModel::Model
   attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :order_id
 
