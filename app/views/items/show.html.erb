@@ -8,13 +8,13 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
-        <%# 商品が売れていればsold outを表示しましょう ※商品購入機能実装後に実装予定%>
-        <%# if  %>
-          <%#div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
-        <%# end %>
-        <%# //商品が売れていればsold outを表示しましょう %>
+      <%# 商品が購入済みの場合 %>
+      <% if @item.order.present? %>
+        <div class='sold-out'>
+          <span>Sold Out!!</span>
+        </div>
+      <% end %>
+      <%# //商品が購入済みの場合 %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -25,20 +25,17 @@
       </span>
     </div>
 
-    <%# ログイン状態による表示の切り替え箇所 %>
-    <% if user_signed_in? %>
+    <%# 商品の販売状況・ログイン状態による表示の切り替え箇所%> 
+    <% if @item.order.blank? && user_signed_in? %>
       <% if @item.user_id == current_user.id %>
         <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>
       <% else %>
-      <% #elsif ※商品購入機能実装後に実装予定 %>
-        <%# 商品が売れていない場合はこちらを表示しましょう %>
-        <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
-        <%# //商品が売れていない場合はこちらを表示しましょう %>
+        <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
       <% end %>
     <% end %>
-    <%# //ログイン状態による表示の切り替え箇所 %>
+    <%# //商品の販売状況・ログイン状態による表示の切り替え箇所%> 
 
     <div class="item-explain-box">
       <span><%= @item.item_info %></span>
