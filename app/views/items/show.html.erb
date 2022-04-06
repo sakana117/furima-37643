@@ -26,14 +26,15 @@
     </div>
 
     <%# 商品の販売状況・ログイン状態による表示の切り替え箇所%> 
-    <% if Order.where.not(item_id: @item.id).exists? || user_signed_in? %>
-        <% if @item.user_id == current_user.id %>
-          <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
-          <p class="or-text">or</p>
-          <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>
-        <% else %>
-          <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
-        <% end %>
+    <% item_exists = Order.where(item_id: @item.id).exists? %>
+    <% if item_exists == false && user_signed_in? %>
+      <% if @item.user_id == current_user.id %>
+        <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>
+      <% else %>
+        <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
+      <% end %>
     <% end %>
     <%# //商品の販売状況・ログイン状態による表示の切り替え箇所%> 
 
