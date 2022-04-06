@@ -9,7 +9,7 @@ RSpec.describe OrderAddress, type: :model do
   end
 
   describe 'ユーザー新規登録' do
-    #テスト総数：13個
+    #テスト総数：14個
     context '新規登録できるとき' do
       #新規登録できるとき：2個
       it '全ての項目が存在すれば登録できる' do
@@ -22,7 +22,7 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     context '新規登録できないとき' do
-      #新規登録できないとき：11個
+      #新規登録できないとき：12個
       #新規登録できないとき：住所関連：7個
       it 'postal_codeが空では登録できない' do
         @order_address.postal_code = ''
