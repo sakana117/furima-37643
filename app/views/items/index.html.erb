@@ -135,7 +135,7 @@
           <div class='item-img-content'>
             <%= image_tag item.image.variant(resize: '500x500'), class: "item-img" %>
             <%# 商品が購入済みの場合 %>
-            <% if Order.where(item_id: item.id).exists? %>
+            <% if item.order.present? %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>

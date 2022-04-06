@@ -9,7 +9,7 @@
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
       <%# 商品が購入済みの場合 %>
-      <% if Order.where(item_id: @item.id).exists? %>
+      <% if @item.order.present? %>
         <div class='sold-out'>
           <span>Sold Out!!</span>
         </div>
@@ -26,8 +26,7 @@
     </div>
 
     <%# 商品の販売状況・ログイン状態による表示の切り替え箇所%> 
-    <% item_exists = Order.where(item_id: @item.id).exists? %>
-    <% if item_exists == false && user_signed_in? %>
+    <% if @item.order.blank? && user_signed_in? %>
       <% if @item.user_id == current_user.id %>
         <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
