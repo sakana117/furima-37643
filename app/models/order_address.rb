@@ -12,9 +12,8 @@ class AddressAddress
     validates :phone_number, format: {with: /\A[0-9]{11}\z/}
     validates :order_id
   end
+  
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
-  extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :prefecture
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
