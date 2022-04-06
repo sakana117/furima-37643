@@ -1,4 +1,6 @@
-window.addEventListener("load", item);
+if(document.URL.match(/new/)){
+  window.addEventListener("load", item);
+}
 
 function item (){
   const ItemPrice = document.getElementById("item-price");
@@ -12,5 +14,18 @@ function item (){
 
     const Profit = document.getElementById("profit");
     Profit.innerHTML = formatter.format(inputItemPrice-inputAddTaxDom);
+  });
+}
+
+if(document.URL.match(/orders/)){
+  window.addEventListener("load", pay);
+}
+
+function pay (){
+  Payjp.setPublicKey("pk_test_******************"); // PAY.JPテスト公開鍵
+  const submit = document.getElementById("button");
+  submit.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("フォーム送信時にイベント発火")
   });
 }
