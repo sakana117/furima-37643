@@ -10,7 +10,6 @@ class OrderAddress
     validates :addresses
     validates :building
     validates :phone_number, format: {with: /\A[0-9]{11}\z/}
-    validates :order_id
   end
   
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
