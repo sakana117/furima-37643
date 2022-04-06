@@ -6,15 +6,12 @@ class AddressAddress
     validates :item_id
     validates :user_id
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :prefecture_id
     validates :city
     validates :addresses
     validates :building
-    validates :phone_number, format: {with: /\A[0-9]{11}\z/}
+    validates :phone_number, format: {with: /\A[0-9]{11}\z/, message: "is invalid."}
     validates :order_id
   end
-  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
-  extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :prefecture
-
-
+  validates :prefecture, numericality: {other_than: 0, message: "can't be blank"}
 end
