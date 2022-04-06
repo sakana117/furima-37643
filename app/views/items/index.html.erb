@@ -134,13 +134,13 @@
           <%= link_to item_path(item.id) do %>
           <div class='item-img-content'>
             <%= image_tag item.image.variant(resize: '500x500'), class: "item-img" %>
-            <%# 商品が購入済みの場合 %>
-            <% if Order.where(item_id: item.id).exists? %>
-              <div class='sold-out'>
+            <%# 商品が売れていればsold outを表示しましょう ※商品購入機能実装後に実装予定%>
+            <%# if  %>
+              <%#div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
-            <% end %>
-            <%# //商品が購入済みの場合 %>
+            <%# end %>
+            <%# //商品が売れていればsold outを表示しましょう %>
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
