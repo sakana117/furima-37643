@@ -60,8 +60,8 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end
 
-      it 'phone_numberが9文字以下では登録できない' do
-        @order_address.phone_number = Faker::Number.number(digits: 9)
+      it 'phone_numberが10文字以下では登録できない' do
+        @order_address.phone_number = Faker::Number.number(digits: 10)
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end
