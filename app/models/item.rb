@@ -4,9 +4,9 @@ class Item < ApplicationRecord
     validates :item_name  ,length: { maximum: 40 }
     validates :item_info  ,length: { maximum: 1000 }
     validates :item_price ,numericality: { with: /\A[0-9]+\z/,message:"is invalid. Input half-width characters" }
-    validates :item_price ,numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
-    
   end
+
+  validates :item_price ,numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
 
   with_options numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
